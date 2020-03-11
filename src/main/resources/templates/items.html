@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1>Items:</h1>
+<!--   <h3 th:text = "|Logged in as ${shoppingCart.cartID}|"></h3>-->
+				<div class="row">
+					
+					<table class="itemList">
+
+						<tr class="tablehead">
+							<th>Item</th>
+							<th>Price</th>
+							<th>Stock</th>
+							<th>Quantity</th>
+						</tr>
+						
+						<tr th:each="item : ${items}">
+							<form th:action="@{/addToCart}" method="get">
+							<td> <span th:text="${item.ItemName}" > Item Name </span></td>
+							<td> <span th:text="${item.Price}" > Item Price </span></td>
+							<td> <span th:text="${item.Stock}" > Item Stock </span></td>
+							
+							
+							<td> <input type="number" name="quantity" min="0" max="100"></td>
+							<td> <input type=submit value="Add to cart" name="button"> </td>
+							<td><input type="hidden" th:name="ItemID" th:value="${item.getItemID()}"/></td>
+							</form>
+						</tr>
+						<!-- items[${itemStat.index}]. -->
+					</table>
+				</div>
+				
+				
+
+<h3>
+	<a href="cart">View Cart</a>
+</h3>
+
+</body>
+</html>

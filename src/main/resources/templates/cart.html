@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+<h1> Your cart here: </h1>
+
+	</div>
+	    <table>
+	        <thead>
+	            <tr> 
+	                <th >Name</th> 
+	                <th >Quantity</th>
+	                <th >Price </th>   
+	                         
+	            </tr>
+	        </thead>    
+	        <tbody>
+	            <tr th:each="i:${cartMap}"> 
+				   <td  th:text="${i.key.ItemName}"></td> 
+				   <td  th:text="${i.value}"></td>
+				   <td  th:text="${i.key.getPrice()}"></td> 
+				   
+				    
+				</tr> 
+	        </tbody>
+	    </table>
+    </div>
+			<span th:text="|Total Price: ${totalPrice}"/>
+<h3>
+	<a href="items">View Items</a>
+</h3>
+
+
+</body>
+</html>
